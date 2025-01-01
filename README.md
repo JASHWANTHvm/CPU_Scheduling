@@ -1,14 +1,16 @@
 # CPU_Scheduling
 
-CPU scheduling algorithms are essential for optimizing the performance of the CPU by efficiently managing the order in which processes are executed. They contribute to:
-
-#-Efficient CPU Utilization
-#-Minimizing Waiting Time
-#-Optimizing Throughput
-#-Reducing Turnaround Time
-#-Ensuring Fairness
-#-Supporting Different Priorities
-#-Maximizing System Efficiency
+# . CPU_Scheduling
+   CPU scheduling algorithms are essential for optimizing the performance of the CPU by efficiently managing the order in which processes are executed.
+   
+# They contribute to:
+. Efficient CPU Utilization
+. Minimizing Waiting Time
+. Optimizing Throughput
+. Reducing Turnaround Time
+. Ensuring Fairness
+. Supporting Different Priorities
+. Maximizing System Efficiency
 
 ![image](https://github.com/user-attachments/assets/aeb99db8-8cdb-4900-a529-63613ff6f2ed)
 
