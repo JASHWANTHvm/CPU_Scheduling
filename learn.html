@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Let's Learn</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('https://slidescorner.com/wp-content/uploads/2024/02/Aesthetic-Pastel-Cute-PowerPoint-Background-Organic-Shapes-Stars-by-SlidesCorner.com_.jpg'); /* Replace with your background image path */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh; /* Full viewport height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-direction: column;
+        }
+
+        .navbar {
+            width: 100%;
+            background-color: rgba(227, 157, 173, 0.9);
+            padding: 20px 0;
+            display: flex;
+            justify-content: left;
+            position: fixed;
+            top: 0;
+            z-index: 1;
+        }
+
+        .navbar a {
+            margin: 0 15px;
+            color:#fff;
+            font-size: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        .content {
+            background-color: rgba(255, 255, 255, 0.9); /* Slight opacity for readability */
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin-top: 60px; /* Add top margin to avoid overlap with navbar */
+            text-align: left;
+            font-size: 20px;
+        }
+
+        h1, p {
+            color: #333;
+        }
+
+        a.back {
+            margin-top: 20px;
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a.back:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        function showContent(id) {
+            const content = {
+                fcfs: `
+                    <h2>First-Come, First-Served (FCFS)</h2>
+                    <p>FCFS schedules processes in the order they arrive. Simple and fair, but longer processes can delay shorter ones, leading to inefficiency.</p>
+                    <h3>Pros:</h3>
+                    <ul>
+                        <li>Simple and easy to implement.</li>
+                        <li>Fair to processes in terms of arrival order.</li>
+                    </ul>
+                    <h3>Cons:</h3>
+                    <ul>
+                        <li>Can lead to long waiting times due to the "convoy effect" where longer processes delay others.</li>
+                        <li>Inefficient for systems with varied process sizes.</li>
+                    </ul>
+                    <h3>How It Works in Gantt Chart:</h3>
+                    <p>Processes are placed on the Gantt chart in the order of arrival, with each process running until completion before the next begins. For example, if Process A arrives before Process B, A completes before B starts, even if B has a shorter burst time.</p>
+                `,
+                sjfs: `
+                    <h2>Shortest Job First (SJF)</h2>
+                    <p>SJF schedules processes based on the shortest burst time, reducing waiting time. However, it can lead to starvation if longer processes keep waiting.</p>
+                    <h3>Pros:</h3>
+                    <ul>
+                        <li>Minimizes average waiting time for processes.</li>
+                        <li>Enhances overall system efficiency.</li>
+                    </ul>
+                    <h3>Cons:</h3>
+                    <ul>
+                        <li>May cause starvation for longer processes.</li>
+                        <li>Requires prior knowledge of burst times, which is often difficult.</li>
+                    </ul>
+                    <h3>How It Works in Gantt Chart:</h3>
+                    <p>Processes are arranged in the Gantt chart in ascending order of burst times. For instance, if Process A has a burst time of 5 and Process B has 3, B will be scheduled first, reducing average waiting time.</p>
+                `,
+                srtf: `
+                    <h2>Shortest Remaining Time First (SRTF)</h2>
+                    <p>SRTF is a preemptive version of SJF, where the process with the shortest remaining time is executed. New processes with a shorter burst time can interrupt ongoing ones.</p>
+                    <h3>Pros:</h3>
+                    <ul>
+                        <li>Minimizes average waiting time further than SJF.</li>
+                        <li>Ideal for systems requiring real-time responses.</li>
+                    </ul>
+                    <h3>Cons:</h3>
+                    <ul>
+                        <li>Complex to implement with frequent preemptions.</li>
+                        <li>Higher risk of starvation for longer processes.</li>
+                    </ul>
+                    <h3>How It Works in Gantt Chart:</h3>
+                    <p>Each process on the Gantt chart starts based on the shortest remaining time. If Process A is executing and Process B arrives with a shorter remaining time, A is preempted, and B starts. This leads to frequent context switches.</p>
+                `,
+                rr: `
+                    <h2>Round Robin (RR)</h2>
+                    <p>RR assigns each process a fixed time slice (quantum). Processes are cycled in a circular order, moving to the back of the queue if they’re not completed within their quantum, ensuring fair CPU access.</p>
+                    <h3>Pros:</h3>
+                    <ul>
+                        <li>Fair, as each process gets an equal time slice.</li>
+                        <li>Responsive, especially useful for interactive systems.</li>
+                    </ul>
+                    <h3>Cons:</h3>
+                    <ul>
+                        <li>Can lead to high turnaround time if the quantum is too small.</li>
+                        <li>High context switching overhead if the quantum is too short.</li>
+                    </ul>
+                    <h3>How It Works in Gantt Chart:</h3>
+                    <p>Each process appears on the Gantt chart for the duration of the quantum. If it completes within the time, it finishes; otherwise, it returns to the queue, and the next process gets a turn. The Gantt chart will display each process in sequence, repeating until they all finish.</p>
+                `,
+                ps: `
+                    <h2>Priority Scheduling (PS)</h2>
+                    <p>PS schedules processes based on priority levels. Processes with higher priority are executed first, and if a higher-priority process arrives, it can preempt the current one.</p>
+                    <h3>Pros:</h3>
+                    <ul>
+                        <li>Efficient for prioritizing critical tasks.</li>
+                        <li>Allows for high customization with aging to prevent starvation.</li>
+                    </ul>
+                    <h3>Cons:</h3>
+                    <ul>
+                        <li>Lower-priority processes may experience starvation.</li>
+                        <li>Requires aging to prevent indefinite delays of low-priority tasks.</li>
+                    </ul>
+                    <h3>How It Works in Gantt Chart:</h3>
+                    <p>Processes are arranged on the Gantt chart based on priority. If Process B has a higher priority than Process A, B is executed first. If a higher-priority process arrives while a lower-priority one is running, the chart will update to reflect this preemption.</p>
+                `,
+                multilevelQueue: `
+                    <h2>Multilevel Queue Scheduling</h2>
+                    <p>This algorithm segments processes into multiple queues based on specific criteria (e.g., priority, process type), with each queue having a distinct scheduling policy.</p>
+                    <h3>Pros:</h3>
+                    <ul>
+                        <li>Efficiently organizes processes with different priorities and needs.</li>
+                        <li>Allows for varied scheduling policies per queue, such as FCFS for batch jobs and RR for interactive tasks.</li>
+                    </ul>
+                    <h3>Cons:</h3>
+                    <ul>
+                        <li>Rigid queue structure with limited movement between queues.</li>
+                        <li>Risk of starvation for lower-priority queues if high-priority queues are consistently busy.</li>
+                    </ul>
+                    <h3>How It Works in Gantt Chart:</h3>
+                    <p>The Gantt chart segments each queue, scheduling all processes in a higher-priority queue before moving to the next. Each queue’s policy determines its processes’ order in the chart.</p>
+                `,
+                multilevelFeedbackQueue: `
+                    <h2>Multilevel Feedback Queue Scheduling</h2>
+                    <p>This scheduling method allows processes to move between queues, adapting to changing execution characteristics. Processes start in high-priority queues and move down if they need more CPU time.</p>
+                    <h3>Pros:</h3>
+                    <ul>
+                        <li>Minimizes starvation by allowing dynamic queue adjustments.</li>
+                        <li>Adapts to process requirements, enhancing responsiveness and efficiency.</li>
+                    </ul>
+                    <h3>Cons:</h3>
+                    <ul>
+                        <li>Complex implementation due to frequent re-evaluation of processes.</li>
+                        <li>High overhead with continuous process movement between queues.</li>
+                    </ul>
+                    <h3>How It Works in Gantt Chart:</h3>
+                    <p>The Gantt chart illustrates processes beginning in high-priority queues. If they aren’t completed within their allotted time, they move to a lower-priority queue, reflected in the chart as they change positions based on current priority levels.</p>
+                `
+            };
+            document.querySelector('.content').innerHTML = content[id] + '<a class="back" href="index.html">Back to Home</a>';
+        }
+    </script>
+</head>
+<body>
+    <div class="navbar">
+        <a onclick="showContent('fcfs')">FCFS</a>
+        <a onclick="showContent('sjfs')">SJF</a>
+        <a onclick="showContent('srtf')">SRTF</a>
+        <a onclick="showContent('rr')">RR</a>
+        <a onclick="showContent('ps')">PR</a>
+        <a onclick="showContent('multilevelQueue')">ML</a>
+        <a onclick="showContent('multilevelFeedbackQueue')">MLF</a>
+    </div>
+    <div class="content">
+        <h1>Let's Learn CPU Scheduling</h1>
+        <p>
+            Here, you will learn about different algorithms used in CPU scheduling, how they work, and their advantages and disadvantages.
+        </p>
+        <a class="back" href="scheduling.html">Back to Home</a>
+    </div>
+</body>
+</html>

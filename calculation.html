@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPU Scheduling Algorithms</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>CPU Scheduling Algorithms</h1>
+        <label for="algorithm">Choose an algorithm:</label><br>
+        <select id="algorithm" onchange="showAlgorithm()">
+            <option value="fcfs">FCFS</option>
+            <option value="sjf">SJF</option>
+            <option value="srtf">SRTF</option>
+            <option value="rr">Round Robin</option>
+            <option value="priority">Priority</option>
+        </select><br>
+        <div id="algorithm-description"></div>
+        
+        <h2>Simulation</h2>
+        <form id="cpu-form" onsubmit="storeAndSimulate(event)">
+            <label for="bursts">CPU Bursts (comma-separated):</label>
+            <input type="text" id="bursts" required>
+            
+            <label for="arrivals">Arrival Times (comma-separated):</label>
+            <input type="text" id="arrivals">
+
+            <label for="priorities">Priorities (comma-separated, for Priority scheduling only):</label>
+            <input type="text" id="priorities">
+
+            <label for="quantum">Quantum Time (for Round Robin only):</label>
+            <input type="number" id="quantum">
+            
+            <button type="submit">Simulate</button>
+
+            <a class="back" href="scheduling.html">Back to Main Page</a>
+
+        </form>
+
+    </div>
+</body>
+</html>

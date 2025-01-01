@@ -1,0 +1,76 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 30px;
+    background-image: url('img1.jpg'); /* Replace with your background image */
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Transparent white background */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow */
+    border-radius: 15px; /* Curved edges */
+}
+
+h1, h2,a {
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Increased gap for better spacing */
+    align-items:stretch;
+}
+
+label, select, input, button {
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 10px; /* Curved edges for input and dropdown */
+}
+
+input, select {
+    border: 1px solid #ccc;
+    width: 100%; /* Ensure inputs are full width */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px; /* Curved edges for button */
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#simulation-result {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    border-radius: 10px; /* Curved edges for result box */
+}
+a.back {
+    padding-top: 30px;
+    margin-top: 60px;
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+}
+
+a.back:hover {
+    text-decoration: underline;
+}
